@@ -8,17 +8,15 @@
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;700&display=swap" rel="stylesheet"/>
     </head>
     <body>
-        <h1>Toaster As a Service</h1>
-        <img id="toaster" src="images/toaster.jpg" alt="A silver toaster" />
-        <p>This is a shiny, new toaster.</p>
-        <ul>
-            <li>Can toast up to 20 pieces at once.</li>
-            <li>Operates at 5000 watts.</li>
-            <li>Rated 6 bananas out of 6.</li>
-        </ul>
+        <div class="imgContainer">
+            <img id="toaster" src="images/toaster.jpg" alt="A silver toaster"/>
+            <img id="specialToast" src="images/special-toast.jpeg" alt="A cute piece of toast."/>
+        </div>
+        <canvas id="canvas"></canvas>
+        <h1>Click toaster to make toast.</h1>
         <p>Created by <a href="https://tennielstudio.com/">Tenniel Studio.</a></p>
-        <button>Make Toast</button>
-        <img id="special-toast" src="images/special-toast.jpeg" alt="A toast with a shiba-inu on it."/>
+        <a href="https://www.vecteezy.com/free-vector/toaster">Toaster Vectors by Vecteezy</a>
         <script src="scripts/main.js"></script>
+        <script src="scripts/inputHandler.js"></script>
     </body>
 </html>
