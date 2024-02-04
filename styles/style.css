@@ -26,5 +26,13 @@ body {
 }
 
 #specialToast {
-    display: none;
+    width: 250px;
+    transform: translateY(100%); /*this is what moved the box all the way to the right in the other guys tutorial*/
+    animation: moveup 0.5s linear forwards; /*attaches to keyframes name, speed, linear speed, retain final values*/
+}
+
+@keyframes moveup {
+    100% { /*100% * 0.5s = 0.5s*/
+        transform: translateY(0);
+    }
 }
