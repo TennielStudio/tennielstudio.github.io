@@ -8,6 +8,7 @@ function showHappyToast() {
   toast.classList.add('popup');
   toast.src = "images/happy-toast.png";
   toast.alt = "A piece of cute toast."
+  toast.style.width = '100%';
   toastBox.appendChild(toast);
 
   // Executes a function after a specified delay (function, delay MS)
@@ -23,6 +24,7 @@ function showBurntToast() {
   toast.classList.add('popup');
   toast.src = "images/burnt-toast.jpeg"; // change this one
   toast.alt = "A piece of burnt toast." // change this one in param
+  toast.style.width = '100%';
   toastBox.appendChild(toast);
 
   // Executes a function after a specified delay (function, delay MS)
@@ -38,6 +40,7 @@ function showBananas() {
   banana.classList.add('popup');
   banana.src = "images/banana.jpg"; // change this one
   banana.alt = "A piece of burnt toast." // change this one in param
+  banana.style.width = '100%';
   toastBox.appendChild(banana);
 
   // Executes a function after a specified delay (function, delay MS)
@@ -61,9 +64,16 @@ function showToast() {
   var audio = new Audio('audio/toasteraudio.mp3');
   audio.play();
 
-  // Randomly choose which toaster pop up image to pick
-  const randomIndex = Math.floor(Math.random() * storeToastPopups.length);
+  // // Randomly choose which toaster pop up image to pick
+  // const randomIndex = Math.floor(Math.random() * storeToastPopups.length);
 
-  // Show the toaster image
-  storeToastPopups[randomIndex]();
+  // // Show the toaster image
+  // storeToastPopups[randomIndex]();
+
+  showHappyToast();
 }
+
+const toastBoxContainer = document.getElementById('toastBoxContainer');
+const imgContainer = document.getElementById('imgContainer');
+
+toastBoxContainer.style.height = imgContainer.style.height + '35%';
