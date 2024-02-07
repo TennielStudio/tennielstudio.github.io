@@ -1,6 +1,24 @@
 let toastBox = document.getElementById('toastBox');
 let toastTimeoutMs = 1500;
 let isToastDisplayed = false;
+const countBread = document.querySelector(".countBread");
+const level = document.querySelector(".grade");
+let breadCounter = 0;
+
+const levels = {
+  3: "Novice",
+  5: "Connoisseur",
+  8: "Maestro",
+  11: "Master",
+  14: "Virtuoso",
+  17: "Guru",
+  20: "Sensei",
+  23: "Legend",
+  26: "Overlord",
+  29: "CEO",
+  32: "King",
+  35: "Kami-sama"
+}
 
 function showHappyToast() {
   // Creates a toast img on click
@@ -51,6 +69,8 @@ function showBananas() {
 }
 
 const storeToastPopups = [showHappyToast, showBurntToast, showBananas];
+const happyToastIdx = 0;
+let happyToastCount = 0;
 
 function showToast() {
   // If toast is dispalyed, do not allow more toasts to populate
@@ -64,16 +84,24 @@ function showToast() {
   var audio = new Audio('audio/toasteraudio.mp3');
   audio.play();
 
-  // // Randomly choose which toaster pop up image to pick
-  // const randomIndex = Math.floor(Math.random() * storeToastPopups.length);
+  // Randomly choose which toaster pop up image to pick
+  const randomIndex = Math.floor(Math.random() * storeToastPopups.length);
 
-  // // Show the toaster image
-  // storeToastPopups[randomIndex]();
+  // Show the toaster image
+  storeToastPopups[randomIndex]();
 
-  showHappyToast();
+  if (randomIndex === happyToastIdx)
+  {
+    happyToastCount++;
+    countBread.innerHTML = happyToastCount;
+    if (levels[happyToastCount])
+    {
+      level.innerHTML = levels[happyToastCount];
+    }
+  }
 }
 
-const toastBoxContainer = document.getElementById('toastBoxContainer');
-const imgContainer = document.getElementById('imgContainer');
+// const toastBoxContainer = document.getElementById('toastBoxContainer');
+// const imgContainer = document.getElementById('imgContainer');
 
-toastBoxContainer.style.height = imgContainer.style.height + '35%';
+// toastBoxContainer.style.height = imgContainer.style.height + '35%';
