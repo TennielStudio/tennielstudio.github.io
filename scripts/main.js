@@ -1,11 +1,14 @@
 let toastBox = document.getElementById('toastBox');
 let toastTimeoutMs = 1500;
+let toastFadeoutMs = 30;
 let isToastDisplayed = false;
 const countBread = document.querySelector(".countBread");
 const level = document.querySelector(".grade");
 let breadCounter = 0;
 const canvas = document.querySelector('#confetti');
 const jsConfetti = new JSConfetti();
+
+let happyToastSrc = "images/third-toast.png";
 
 const levels = {
   3: "Connoisseur",
@@ -24,52 +27,43 @@ const levels = {
   41: "Kami-sama"
 }
 
-function showHappyToast() {
+function ToastProperty(srcText, altText) {
+  this.srcText = srcText;
+  this.altText = altText;
+}
+
+let toastProperties = [
+  new ToastProperty(happyToastSrc, "A piece of cute toast."),
+  new ToastProperty("images/burnt-toast.png", "A piece of burnt toast."),
+  new ToastProperty("images/banana.png", "A yellow banana.")
+]
+
+function showSpecificToast(srcText, altText) {
+  console.log("hello?");
   // Creates a toast img on click
   let toast = document.createElement('img');
   toast.classList.add('popup');
-  toast.src = "images/third-toast.png";
-  toast.alt = "A piece of cute toast."
+  toast.src = srcText;
+  toast.alt = altText;
   toastBox.appendChild(toast);
 
   // Executes a function after a specified delay (function, delay MS)
   setTimeout(()=> {
-    toast.remove();
-    isToastDisplayed = false;
+    var opacity = 1;
+    var intervalId = setInterval(function() {
+      if (opacity > 0) {
+        opacity -= 0.1;
+        toast.style.opacity = opacity.toString();
+      }
+      else {
+        clearInterval(intervalId);
+        toast.remove();
+        isToastDisplayed = false;
+      }
+    }, toastFadeoutMs);
   }, toastTimeoutMs)
 }
 
-function showBurntToast() {
-  // Creates a toast img on click
-  let toast = document.createElement('img');
-  toast.classList.add('popup');
-  toast.src = "images/burnt-toast.png"; // change this one
-  toast.alt = "A piece of burnt toast." // change this one in param
-  toastBox.appendChild(toast);
-
-  // Executes a function after a specified delay (function, delay MS)
-  setTimeout(()=> {
-    toast.remove();
-    isToastDisplayed = false;
-  }, toastTimeoutMs)
-}
-
-function showBananas() {
-  // Creates a img on click
-  let banana = document.createElement('img');
-  banana.classList.add('popup');
-  banana.src = "images/banana.png"; // change this one
-  banana.alt = "A piece of burnt toast." // change this one in param
-  toastBox.appendChild(banana);
-
-  // Executes a function after a specified delay (function, delay MS)
-  setTimeout(()=> {
-    banana.remove();
-    isToastDisplayed = false;
-  }, toastTimeoutMs)
-}
-
-const storeToastPopups = [showHappyToast, showBurntToast, showBananas];
 const happyToastIdx = 0;
 let happyToastCount = 0;
 
@@ -86,12 +80,14 @@ function showToast() {
   audio.play();
 
   // Randomly choose which toaster pop up image to pick
-  const randomIndex = Math.floor(Math.random() * storeToastPopups.length);
+  const randomIndex = Math.floor(Math.random() * toastProperties.length);
 
-  // Show the toaster image
-  storeToastPopups[randomIndex]();
+  let toastSrc = toastProperties[randomIndex].srcText;
+  let toastAlt = toastProperties[randomIndex].altText;
 
-  if (randomIndex === happyToastIdx)
+  showSpecificToast(toastSrc, toastAlt);
+
+  if (toastSrc === happyToastSrc)
   {
     happyToastCount++;
     countBread.innerHTML = happyToastCount;
