@@ -4,29 +4,32 @@ let isToastDisplayed = false;
 const countBread = document.querySelector(".countBread");
 const level = document.querySelector(".grade");
 let breadCounter = 0;
+const canvas = document.querySelector('#confetti');
+const jsConfetti = new JSConfetti();
 
 const levels = {
-  3: "Novice",
-  5: "Connoisseur",
+  3: "Connoisseur",
+  5: "Aficionado",
   8: "Maestro",
   11: "Master",
   14: "Virtuoso",
   17: "Guru",
   20: "Sensei",
   23: "Legend",
-  26: "Overlord",
-  29: "CEO",
-  32: "King",
-  35: "Kami-sama"
+  26: "Underlord",
+  29: "Overlord",
+  32: "CFO",
+  35: "CEO",
+  38: "King",
+  41: "Kami-sama"
 }
 
 function showHappyToast() {
   // Creates a toast img on click
   let toast = document.createElement('img');
   toast.classList.add('popup');
-  toast.src = "images/happy-toast.png";
+  toast.src = "images/third-toast.png";
   toast.alt = "A piece of cute toast."
-  toast.style.width = '100%';
   toastBox.appendChild(toast);
 
   // Executes a function after a specified delay (function, delay MS)
@@ -40,9 +43,8 @@ function showBurntToast() {
   // Creates a toast img on click
   let toast = document.createElement('img');
   toast.classList.add('popup');
-  toast.src = "images/burnt-toast.jpeg"; // change this one
+  toast.src = "images/burnt-toast.png"; // change this one
   toast.alt = "A piece of burnt toast." // change this one in param
-  toast.style.width = '100%';
   toastBox.appendChild(toast);
 
   // Executes a function after a specified delay (function, delay MS)
@@ -56,9 +58,8 @@ function showBananas() {
   // Creates a img on click
   let banana = document.createElement('img');
   banana.classList.add('popup');
-  banana.src = "images/banana.jpg"; // change this one
+  banana.src = "images/banana.png"; // change this one
   banana.alt = "A piece of burnt toast." // change this one in param
-  banana.style.width = '100%';
   toastBox.appendChild(banana);
 
   // Executes a function after a specified delay (function, delay MS)
@@ -97,11 +98,9 @@ function showToast() {
     if (levels[happyToastCount])
     {
       level.innerHTML = levels[happyToastCount];
+      jsConfetti.addConfetti({
+        emojis:['🍌']
+      });
     }
   }
 }
-
-// const toastBoxContainer = document.getElementById('toastBoxContainer');
-// const imgContainer = document.getElementById('imgContainer');
-
-// toastBoxContainer.style.height = imgContainer.style.height + '35%';

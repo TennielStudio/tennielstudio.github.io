@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width"/>
-        <title>My Toaster Page</title>
+        <title>Toaster as a Service</title>
         <link href="styles/style.css" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;700&display=swap" rel="stylesheet"/>
     </head>
@@ -13,11 +13,13 @@
                 <img id="glitterHeading" src="images/glitter2.gif" alt="Toaster as a Service"/>
             </div>
 
-            <div id="toastBoxContainer">
+            <!-- <div id="toastBoxContainer">
                 <div class="toastBoxSizer">
                     <div id="toastBox"></div>
                 </div>
-            </div>
+            </div> -->
+
+            <div id="toastBox"></div>
 
             <div id="imgContainer">
                 <img id="toaster" onclick="showToast()" src="images/cute-toaster.png" alt="A toaster"/>
@@ -28,8 +30,10 @@
             <div class="counter"> You are a toaster&nbsp;<span class="grade">Apprentice</span>.</div>
             <p id="tennielStudio">Created by <a href="https://tennielstudio.com/">Tenniel Studio.</a></p>
             <!-- <a href="https://www.vecteezy.com/free-vector/toaster">Toaster Vectors by Vecteezy</a> -->
+            
+            <canvas id="confetti"></canvas>
         </div>
-
+        <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
         <script src="scripts/main.js"></script>
     </body>
 </html>
