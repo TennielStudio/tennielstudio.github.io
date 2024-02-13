@@ -39,7 +39,6 @@ let toastProperties = [
 ]
 
 function showSpecificToast(srcText, altText) {
-  console.log("hello?");
   // Creates a toast img on click
   let toast = document.createElement('img');
   toast.classList.add('popup');

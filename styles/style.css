@@ -1,11 +1,13 @@
 html {
     font-size: 10px;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Comic Neue", cursive;
+    font-weight: 400;
+    font-style: normal;
     background-image: url("/images/special-toast.jpeg");
+    touch-action: manipulation;
 }
 
 body {
-    /* change this */
     margin-top: 15vh;
 }
 
@@ -55,14 +57,12 @@ body {
 
 #instructions
 {
-    font-family: "Comic Sans MS";
     font-size: 1.7rem;
     font-weight: bold;
     line-height: 2;
 }
 
 .counter {
-    font-family: "Comic Sans MS";
     font-size: 1.5rem;
 }
 
@@ -72,7 +72,6 @@ body {
 }
 
 #tennielStudio {
-    font-family: "Comic Sans MS";
     font-size: 1.3rem;
     font-weight: bold;
     line-height: 2;
@@ -81,7 +80,6 @@ body {
 /*starts at iPad Mini*/
 @media only screen and (min-width: 550px) {
     body {
-        /* change this */
         margin-top: 6vh;
     }
 
@@ -95,8 +93,6 @@ body {
 
     #glitterHeading {
         width: 95%;
-        /* padding-left: 2%; */
-        /* border: 6px solid; */
     }
 
     #instructions {
@@ -138,7 +134,6 @@ body {
     
     #toastBox {
         height: 20vh;
-        /* height: 500px; */
     }
 
     #glitterHeading {
@@ -151,17 +146,14 @@ body {
     width: 0;
 }
 
- /*applies to anyone with the toast class, cute, burnt, etc.*/
 .popup {
-    /*this is what moved the box all the way to the right in the other guys tutorial*/
     transform: translateY(100%);
     width: 20vw;
-     /*attaches to keyframes name, speed, linear speed, retain final values*/
     animation: moveup 0.5s linear forwards;
 }
 
 @keyframes moveup {
-    100% { /*100% * 0.5s = 0.5s*/
+    100% {
         transform: translateY(0);
     }
 }
