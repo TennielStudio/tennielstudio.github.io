@@ -3,7 +3,7 @@ html {
     font-family: "Comic Neue", cursive;
     font-weight: 400;
     font-style: normal;
-    background-image: url("/images/special-toast.jpeg");
+    background-image: url("/images/special-toast-min.jpeg");
     touch-action: manipulation;
 }
 
@@ -49,8 +49,14 @@ body {
     justify-content: center;
 }
 
+#toaster {
+    max-width: 100%; /* Ensures the toaster image doesn't exceed its container's width */
+    width: 50%; /* Initial width of the toaster image */
+    height: auto; /* Allows the image's height to adjust proportionally */
+    max-height: 65vh; /* Limits the maximum height of the toaster image */
+}
+
 #toaster{
-    width: 50%;
     z-index: 30;
     cursor: pointer;
 }
@@ -99,6 +105,21 @@ body {
     font-size: .5rem;
 }
 
+.popup {
+    transform: translateY(100%);
+    max-width: 100%;
+    width: 80%;
+    height: auto;
+    max-height: 30vh;
+    animation: moveup 0.5s linear forwards;
+}
+
+@keyframes moveup {
+    100% {
+        transform: translateY(0);
+    }
+}
+
 /*starts at iPad Mini*/
 @media only screen and (min-width: 550px) {
     body {
@@ -114,7 +135,8 @@ body {
     }
 
     #glitterHeading {
-        width: 95%;
+        max-width: 100%;
+        height: auto;
     }
 
     #instructions {
@@ -133,49 +155,60 @@ body {
         width: 20vw;
         height: 20vh;
     }
+
+    .popup {
+        width: 100%;
+    }
 }
 
 /*starts at Laptop Size*/
 @media only screen and (min-width: 800px) { 
     .parentContainer{
-        height: 89vh;
+        height: 80vh;
         width: 60vw;
     }
 
+    #glitterHeadingWrapper {
+        margin-top: 4vh;
+    }
+    
+    #glitterHeading {
+        max-width: 80%;
+    }
+
     #instructions {
-        font-size: 2.0rem;
+        font-size: 2.4rem;
     }
 
     .counter {
-        font-size: 1.9rem;
+        font-size: 2.2rem;
     }
 
     #tennielStudio {
-        font-size: 1.6rem;
+        font-size: 2.1rem;
     }
     
     #toastBox {
         height: 20vh;
+        max-height: 15%;
     }
 
-    #glitterHeading {
-        width: 90%;
+    #toaster{
+        width: 35%;
+    }
+
+    .popup {
+        width: 50%;
+    }
+}
+
+@media only screen and (min-width: 2000px) { 
+    #toastBox {
+        max-height: 400px;
     }
 }
 
 #confetti {
     height: 0;
     width: 0;
-}
-
-.popup {
-    transform: translateY(100%);
-    width: 20vw;
-    animation: moveup 0.5s linear forwards;
-}
-
-@keyframes moveup {
-    100% {
-        transform: translateY(0);
-    }
 }
